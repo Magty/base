@@ -1,10 +1,26 @@
 <template>
-  <div>tel:5555555</div>
+  <div class="tel">
+    <p>{{ msg }}</p>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      msg: ''
+    }
+  },
+  mounted() {
+    this.$bus.$on('on-click', mes => {
+      this.msg = mes
+    })
+  }
+}
 </script>
 
 <style>
+.tel {
+  border: 1px red solid;
+}
 </style>

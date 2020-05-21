@@ -3,6 +3,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
+    <b>{{ food }}</b>
     <button @click="handleClick('push')">主页</button>
     <button @click="handleClick('replace')">替换</button>
     <button @click="handleClick('back')">返回上一页</button>
@@ -17,6 +18,24 @@ export default {
   name: 'Home',
   components: {
     HelloWorld
+  },
+  props: {
+    food: {
+      type: String,
+      default: 'Apple'
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log('Home beforeRouterEnter')
+    next()
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log('home beforeRouteUpdate')
+    next()
+  },
+  beforeRouteLeave(to, from, next) {
+    console.log('home beforeRouteLeave ')
+    next()
   },
   methods: {
     handleClick(type) {

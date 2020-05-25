@@ -1,23 +1,32 @@
 /* eslint-disable no-tabs */
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <!-- <img alt="Vue logo" src="../assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />-->
     <b>{{ food }}</b>
     <button @click="handleClick('push')">主页</button>
     <button @click="handleClick('replace')">替换</button>
     <button @click="handleClick('back')">返回上一页</button>
+    <button @click="getInfo" :style="{ background: bgColor}">请求数据</button>
+    <img :src="url" alt />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+/* import HelloWorld from '@/components/HelloWorld.vue' */
+import { getUserInfo } from '@/api/user'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    /* HelloWorld */
+  },
+  data() {
+    return {
+      url: '',
+      bgColor: ''
+    }
   },
   props: {
     food: {
@@ -59,6 +68,16 @@ export default {
           path: `/argu/${name}`
         })
       }
+    },
+    getInfo() {
+      getUserInfo({ userId: 21 }).then(res => {
+        console.log(`res:${res.data}`)
+        this.url = res.data.img
+        this.bgColor = res.data.color
+      })
+      /* axios.post('/getUserInfo', { userId: 21 }).then(res => {
+        console.log(res)
+      }) */
     }
   }
 }

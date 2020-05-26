@@ -48,6 +48,11 @@ export default [{
     component: () => import('@/views/CountTo.vue')
   },
   {
+    path: '/render-page',
+    name: 'Renderpage',
+    component: () => import('@/views/Renderpage')
+  },
+  {
     path: '/split-pane',
     name: 'Splitpane',
     component: () => import('@/views/SplitPane.vue')

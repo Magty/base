@@ -9,6 +9,7 @@
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="getInfo" :style="{ background: bgColor}">请求数据</button>
     <img :src="url" alt />
+    <button @click="handLogout">退出登录</button>
   </div>
 </template>
 
@@ -16,6 +17,7 @@
 // @ is an alias to /src
 /* import HelloWorld from '@/components/HelloWorld.vue' */
 import { getUserInfo } from '@/api/user'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Home',
@@ -47,6 +49,7 @@ export default {
     next()
   },
   methods: {
+    ...mapActions(['logout']),
     handleClick(type) {
       if (type === 'back') {
         this.$router.go(-1)
@@ -78,6 +81,12 @@ export default {
       /* axios.post('/getUserInfo', { userId: 21 }).then(res => {
         console.log(res)
       }) */
+    },
+    handLogout() {
+      this.logout()
+      this.$router.push({
+        name: 'Login'
+      })
     }
   }
 }

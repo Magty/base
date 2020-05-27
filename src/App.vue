@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!--  <div id="nav">
       <router-link to="/">Home</router-link>|
       <router-link :to="{name:'About'}">About</router-link>
-    </div>
+    </div>-->
     <transition-group :name="routerTransition">
       <router-view key="default" />
       <router-view key="email" name="email" />

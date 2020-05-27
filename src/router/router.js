@@ -1,10 +1,16 @@
 import Home from '@/views/Home.vue'
+import Layout from '@/views/Layout.vue'
 export default [{
     path: '/',
     name: 'Home',
     alias: '/home_page',
-    component: Home,
-    props: route => ({
+    component: Layout,
+    children: [{
+      path: 'home',
+      name: 'HomeContent',
+      component: Home
+    }]
+    /* props: route => ({
       food: route.query.food
     }),
     beforeEnter: (to, from, next) => {
@@ -14,7 +20,7 @@ export default [{
         // alert('来自内部页')
       }
       next()
-    }
+    } */
   },
   {
     path: '/login',

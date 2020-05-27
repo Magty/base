@@ -3,13 +3,26 @@
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />-->
-    <b>{{ food }}</b>
+    <!-- <b>{{ food }}</b>
     <button @click="handleClick('push')">主页</button>
     <button @click="handleClick('replace')">替换</button>
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="getInfo" :style="{ background: bgColor}">请求数据</button>
     <img :src="url" alt />
-    <button @click="handLogout">退出登录</button>
+    <button @click="handLogout">退出登录</button>-->
+    <Row>
+      <i-col></i-col>
+    </Row>
+    <Row :gutter="10">
+      <i-col span="12"></i-col>
+      <i-col span="12"></i-col>
+    </Row>
+    <Row :gutter="10" class="blue">
+      <i-col :md="6" :sm="12" :xs="24"></i-col>
+      <i-col :md="6" :sm="12" :xs="24"></i-col>
+      <i-col :md="6" :sm="12" :xs="24"></i-col>
+      <i-col :md="6" :sm="12" :xs="24"></i-col>
+    </Row>
   </div>
 </template>
 
@@ -91,3 +104,18 @@ export default {
   }
 }
 </script>
+<style lang="less">
+.home {
+  .ivu-col {
+    height: 50px;
+    background: palegreen content-box;
+    margin-top: 10px;
+    /* background-clip: content-box; */
+  }
+  .blue {
+    .ivu-col {
+      background: blue content-box;
+    }
+  }
+}
+</style>

@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './router'
-import store from '@/store'
+// import store from '@/store'
 import {
-  setTitle,
-  getToken,
-  setToken
+  setTitle
+  /* ,
+    getToken,
+    setToken */
 } from '@/lib/util'
 
 Vue.use(VueRouter)
@@ -14,10 +15,10 @@ const router = new VueRouter({
   /* mode: 'history', */
   routes
 })
-// const HAS_LOGINED = false
+const HAS_LOGINED = true
 router.beforeEach((to, from, next) => {
   to.meta && setTitle(to.meta.title)
-  const token = getToken()
+  /* const token = getToken()
   if (token) {
     store.dispatch('authorization', token).then(() => {
       if (to.name === 'Login') {
@@ -41,8 +42,8 @@ router.beforeEach((to, from, next) => {
         name: 'Login'
       })
     }
-  }
-  /* if (to.name !== 'Login') {
+  } */
+  if (to.name !== 'Login') {
     if (HAS_LOGINED) {
       next()
     } else {
@@ -58,7 +59,7 @@ router.beforeEach((to, from, next) => {
     } else {
       next()
     }
-  } */
+  }
 })
 
 router.beforeResolve((to, from, next) => {

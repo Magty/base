@@ -4,6 +4,11 @@ import router from './router'
 import store from './store'
 import Bus from './lib/bus'
 
+import ViewUI from 'view-design'
+import 'view-design/dist/styles/iview.css'
+
+Vue.use(ViewUI)
+
 /* if (process.env.NODE_ENV !== 'production') {
   require('./mock')
 } */

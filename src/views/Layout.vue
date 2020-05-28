@@ -1,7 +1,9 @@
 <template>
   <div class="layout-wrapper">
     <Layout class="layout-outer">
-      <Sider collapsible hide-trigger breakpoint="sm" v-model="collapsible"></Sider>
+      <Sider collapsible hide-trigger breakpoint="sm" v-model="collapsed">
+        <sider-menu :collapsed="collapsed" :list="menuList"></sider-menu>
+      </Sider>
       <Layout>
         <Header class="header-wrapper">
           <Icon :class="triggerClasses" @click.native="handleCollapsed" type="md-menu" :size="32" />
@@ -17,20 +19,65 @@
 </template>
 
 <script>
+import SiderMenu from '_c/sider-menu'
 export default {
   data() {
     return {
-      collapsible: false
+      collapsed: false,
+      menuList: [
+        {
+          title: '栏目1',
+          name: 'menu1',
+          icon: 'ios-home'
+        },
+        {
+          title: '栏目2',
+          name: 'menu2',
+          icon: 'ios-contact'
+        },
+        {
+          title: '栏目3',
+          name: 'menu3',
+          icon: 'ios-help-circle',
+          children: [
+            {
+              title: '栏目3-1',
+              name: 'menu3-1',
+              icon: 'ios-home'
+            },
+            {
+              title: '栏目3-2',
+              name: 'menu3-2',
+              icon: 'ios-contact',
+              children: [
+                {
+                  title: '栏目3-2-1',
+                  name: 'menu3-2-1',
+                  icon: 'ios-home'
+                },
+                {
+                  title: '栏目3-2-2',
+                  name: 'menu3-2-2',
+                  icon: 'ios-contact'
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
+  },
+  components: {
+    SiderMenu
   },
   computed: {
     triggerClasses() {
-      return ['trigger-icon', this.collapsible ? 'rotate' : '']
+      return ['trigger-icon', this.collapsed ? 'rotate' : '']
     }
   },
   methods: {
     handleCollapsed() {
-      this.collapsible = !this.collapsible
+      this.collapsed = !this.collapsed
     }
   }
 }

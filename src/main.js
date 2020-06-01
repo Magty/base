@@ -9,9 +9,9 @@ import 'view-design/dist/styles/iview.css'
 
 Vue.use(ViewUI)
 
-/* if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   require('./mock')
-} */
+}
 
 Vue.config.productionTip = false
 Vue.prototype.$bus = Bus

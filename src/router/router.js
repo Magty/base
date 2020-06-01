@@ -23,6 +23,22 @@ export default [{
     } */
   },
   {
+    path: '/component',
+    name: 'Component',
+    component: Layout,
+    meta: {
+      title: '表格'
+    },
+    children: [{
+      path: 'table',
+      name: 'TablePage',
+      meta: {
+        title: '表格'
+      },
+      component: () => import('@/views/Table.vue')
+    }]
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login.vue')
